@@ -6,7 +6,8 @@
   --primary-purple-hover: #7e22ce;
   --dark-black: #0a0a0b;
   --light-gray: #f3f4f6;
-  --mid-gray: #9ca3af;
+  --mid-gray: #5c6475; /* WCAG AA High Contrast gray on White background */
+  --text-muted-dark: #a1a1aa; /* WCAG AA Contrast-compliant gray on Dark background */
   --white: #ffffff;
   --star-gold: #fbbf24;
 }
@@ -141,7 +142,7 @@ body.ready {
   z-index: 50;
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(16px);
-  border-b: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   height: 56px;
   display: flex;
   align-items: center;
@@ -508,13 +509,14 @@ body.ready {
   color: var(--dark-black);
 }
 
+/* WCAG AA High Contrast secure background tone for Red badges */
 .badge-discount {
   position: absolute;
   top: 4px;
   right: 4px;
   padding: 2px 6px;
   border-radius: 9999px;
-  background: #ef4444;
+  background: #b91c1c; /* High-contrast secure Red-700 color */
   color: var(--white);
   font-size: 7px;
   font-weight: 700;
@@ -547,10 +549,11 @@ body.ready {
   color: var(--dark-black);
 }
 
+/* Muted grey with > 4.5:1 Contrast ratio on White backgrounds */
 .price-original {
   font-size: 0.75rem;
   text-decoration: line-through;
-  color: var(--mid-gray);
+  color: var(--mid-gray); 
 }
 
 /* Rating component with inline SVGs */
@@ -575,7 +578,7 @@ body.ready {
 .rating-text {
   font-size: 9px;
   font-weight: 500;
-  color: #6b7280;
+  color: #4b5563;
   margin-left: 2px;
 }
 
@@ -927,7 +930,7 @@ body.ready {
 
 .cart-item-meta {
   font-size: 10px;
-  color: #6b7280;
+  color: #4b5563;
   margin-top: 0.25rem;
 }
 
@@ -988,7 +991,7 @@ body.ready {
 
 .checkout-item-details .item-qty {
   font-size: 10px;
-  color: #6b7280;
+  color: #4b5563;
 }
 
 .item-total-price {
@@ -1007,7 +1010,7 @@ body.ready {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #6b7280;
+  color: #4b5563;
   margin-bottom: 0.75rem;
 }
 
@@ -1103,7 +1106,7 @@ body.ready {
   font-weight: 700;
   border-radius: 0.5rem;
   cursor: pointer;
-  color: #6b7280;
+  color: #4b5563;
   transition: background 0.2s, color 0.2s;
 }
 
@@ -1261,7 +1264,7 @@ body.ready {
   text-align: center;
   padding: 2.5rem 0;
   font-size: 0.75rem;
-  color: var(--mid-gray);
+  color: #4b5563;
 }
 
 .profile-card {
@@ -1300,7 +1303,7 @@ body.ready {
   width: 100%;
   text-align: center;
   font-size: 11px;
-  color: #6b7280;
+  color: #4b5563;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -1371,7 +1374,7 @@ body.ready {
 }
 
 /* ==========================================================================
-   ১৪. FOOTER DESIGN (No external dependency layout)
+   ১৪. FOOTER DESIGN (Accessible High-contrast text colors)
    ========================================================================== */
 .app-footer {
   margin-top: 4rem;
@@ -1412,7 +1415,7 @@ body.ready {
 
 .footer-tagline {
   font-size: 10px;
-  color: #6b7280;
+  color: var(--text-muted-dark); /* Enhanced Contrast for Black background */
   margin-top: 0.25rem;
 }
 
@@ -1454,7 +1457,7 @@ body.ready {
 
 .policy-link {
   font-size: 11px;
-  color: #6b7280;
+  color: var(--text-muted-dark); /* Enhanced Contrast for Black background */
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -1469,5 +1472,5 @@ body.ready {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
   font-size: 9px;
-  color: #6b7280;
+  color: var(--text-muted-dark); /* Enhanced Contrast for Black background */
 }
