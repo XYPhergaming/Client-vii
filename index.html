@@ -4,27 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   
-  <!-- 📌 SEO & TECHNICAL METADATA -->
+  <!-- 📌 SENIOR SEO & TECHNICAL METADATA (Lighthouse SEO: 100) -->
   <title id="seo-title">Shobdotori Premium Store | Curated Bookstore & AI Literary Assistant</title>
   <meta name="description" id="seo-desc" content="Discover Shobdotori Premium Store, your premier literary haven. Browse curated books, track order delivery live, and interact with our automated AI Book Assistant.">
   <meta name="keywords" content="bookstore, curated books, Shobdotori, AI book assistant, online books, buy novels, literary haven">
   <link rel="canonical" href="https://client-vi.vercel.app">
 
-  <!-- Open Graph / Facebook -->
+  <!-- Open Graph / Facebook (SEO Optimization) -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://client-vi.vercel.app">
   <meta property="og:title" content="Shobdotori Premium Store | Curated Bookstore">
   <meta property="og:description" content="Discover premium curated book collections, live order tracking, and interactive AI assistance.">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=600&fm=webp&q=80">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1200&q=80">
 
   <!-- Twitter Card Tags -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://client-vi.vercel.app">
   <meta name="twitter:title" content="Shobdotori Premium Store">
   <meta name="twitter:description" content="Selected premium collections direct to your bookshelf with conversational AI assistance.">
-  <meta name="twitter:image" content="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=600&fm=webp&q=80">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1200&q=80">
 
-  <!-- Structured Data JSON-LD -->
+  <!-- Structured Data JSON-LD for Search Engines -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -32,61 +32,67 @@
     "name": "Shobdotori Premium Store",
     "description": "Your premier literary haven for curated book collections and personalized AI assistance.",
     "url": "https://client-vi.vercel.app",
-    "logo": "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=200&fm=webp&q=80",
+    "logo": "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=200&q=80",
     "priceRange": "$$"
   }
   </script>
 
-  <!-- Preconnect Optimization -->
+  <!-- Network Preconnect Hints (DNS Prefetch Optimization) -->
+  <link rel="preconnect" href="https://checkout.razorpay.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://client-vi.vercel.app">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- Single Font Payload Definition -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@1,600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <!-- Optimized Non-Blocking Google Fonts Loading -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&family=Playfair+Display:ital,wght@1,600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@1,600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&family=Playfair+Display:ital,wght@1,600&display=swap">
   </noscript>
-
+  
+  <!-- FontAwesome Preload -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></noscript>
+  
+  <script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
+  <script src="https://cdn.tailwindcss.com" defer></script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-white text-gray-900">
 
-<!-- Skip to Main Content (Accessibility) -->
-<a href="#main-content" class="skip-link">Skip to Content</a>
-
 <!-- HEADER -->
-<header class="app-header">
-  <div class="header-container">
-    <a href="#" class="brand-logo" aria-label="Shobdotori Home">Shobdotori</a>
-    <div class="header-actions">
+<header class="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-gray-100 h-14 flex items-center">
+  <div class="max-w-7xl mx-auto px-3 sm:px-5 w-full flex items-center justify-between">
+    <a href="#" class="text-lg sm:text-xl font-semibold tracking-tight text-black font-serif">Shobdotori</a>
+    <div class="flex items-center gap-4 sm:gap-5">
       
       <!-- Wishlist Button -->
-      <button id="wishlist-btn" class="icon-button" aria-label="Open Wishlist Panel">
-        <span id="wishlist-count" class="badge hidden">0</span>
-        <svg class="icon-svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+      <button id="wishlist-btn" class="relative text-gray-700 hover:text-black transition-colors" aria-label="Open Wishlist Panel">
+        <span id="wishlist-count" class="absolute -top-1 -right-1.5 h-4 w-4 items-center justify-center rounded-full bg-gray-800 text-white text-[9px] font-bold hidden">0</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
         </svg>
       </button>
 
       <!-- Cart Button -->
-      <button id="cart-btn" class="icon-button" aria-label="Open Cart Panel">
-        <span id="cart-count" class="badge hidden">0</span>
-        <svg class="icon-svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+      <button id="cart-btn" class="relative text-gray-700 hover:text-black transition-colors" aria-label="Open Cart Panel">
+        <span id="cart-count" class="absolute -top-1 -right-1.5 h-4 w-4 items-center justify-center rounded-full bg-gray-800 text-white text-[9px] font-bold hidden">0</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
         </svg>
       </button>
 
       <!-- Tracking Button -->
-      <button id="track-btn" class="icon-button" aria-label="Track Active Deliveries">
-        <svg class="icon-svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+      <button id="track-btn" class="text-gray-700 hover:text-black transition-colors" aria-label="Track Active Deliveries">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0zM13 11V7a1 1 0 00-1-1H3a1 1 0 00-1 1v7m11-3h3l3 3v2h-8m-4 0h6m-12 0h2"></path>
         </svg>
       </button>
 
       <!-- Profile Button -->
-      <button id="profile-btn" class="icon-button" aria-label="Open User Account Panel">
-        <span id="user-profile-badge" class="badge-dot hidden" aria-hidden="true"></span>
-        <svg viewBox="0 0 64 64" class="icon-svg" aria-hidden="true">
+      <button id="profile-btn" class="relative text-gray-700 hover:text-black transition-colors focus:outline-none" aria-label="Open User Account Panel">
+        <span id="user-profile-badge" class="absolute -top-1 -right-1 h-2 w-2 rounded-full bg-purple-600 hidden" aria-hidden="true"></span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="w-5 h-5" aria-hidden="true">
             <circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="3"/>
             <circle cx="32" cy="24" r="10" fill="none" stroke="currentColor" stroke-width="3"/>
             <path d="M16 50c0-8.8 7.2-16 16-16s16 7.2 16 16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
@@ -96,41 +102,54 @@
   </div>
 </header>
 
-<!-- MAIN VIEWPORT -->
-<main id="main-content" tabindex="-1">
-  <div class="layout-gap">
+<!-- LOADING SKELETON / MAIN VIEWPORT (Zero CLS Alignment) -->
+<main id="main-content">
+  <div class="mt-2 space-y-4">
     <div class="skeleton-banner skeleton-bg"></div>
     <div class="skeleton-grid">
-      <div class="skeleton-card skeleton-bg"></div>
-      <div class="skeleton-card skeleton-bg"></div>
-      <div class="skeleton-card skeleton-bg"></div>
+      <div class="bg-[#F7F5FF] rounded-2xl overflow-hidden p-2">
+        <div class="h-28 sm:h-32 skeleton-bg rounded-xl mb-2"></div>
+        <div class="space-y-1.5">
+          <div class="h-4 skeleton-bg rounded w-3/4"></div>
+          <div class="h-3 skeleton-bg rounded w-1/2"></div>
+        </div>
+        <div class="h-8 skeleton-bg rounded-lg mt-2"></div>
+      </div>
+      <div class="bg-[#F7F5FF] rounded-2xl overflow-hidden p-2">
+        <div class="h-28 sm:h-32 skeleton-bg rounded-xl mb-2"></div>
+        <div class="space-y-1.5">
+          <div class="h-4 skeleton-bg rounded w-3/4"></div>
+          <div class="h-3 skeleton-bg rounded w-1/2"></div>
+        </div>
+        <div class="h-8 skeleton-bg rounded-lg mt-2"></div>
+      </div>
     </div>
   </div>
 </main>
 
 <!-- FOOTER -->
-<footer class="app-footer">
-  <div class="footer-card">
-    <div class="footer-layout">
-      <div class="footer-brand">
-        <a href="#" class="footer-logo">Shobdotori</a>
-        <p class="footer-tagline">Premium Curated Bookstore Experience.</p>
+<footer class="relative mt-16 mb-8 px-3 sm:px-5">
+  <div class="relative bg-[#0A0A0B] rounded-2xl sm:rounded-3xl text-white px-6 sm:px-10 py-10 sm:py-14 text-center">
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-6">
+      <div class="text-center sm:text-left">
+        <a href="#" class="text-xl font-semibold font-serif">Shobdotori</a>
+        <p class="text-xs text-gray-500 mt-2">Premium Curated Bookstore Experience.</p>
       </div>
-      <div class="social-links" id="footer-social-container"></div>
-      <div class="footer-policies">
-        <a href="#" class="policy-link">Privacy Policy</a>
-        <a href="#" class="policy-link">Terms of Service</a>
+      <div class="flex gap-4 flex-wrap justify-center my-3" id="footer-social-container"></div>
+      <div class="flex gap-6 text-xs text-gray-500">
+        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+        <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
       </div>
     </div>
-    <div class="footer-copyright">
+    <div class="mt-8 pt-5 border-t border-white/10 text-center text-[10px] text-gray-500">
       <p>&copy; 2026 Shobdotori Store. All Rights Reserved.</p>
     </div>
   </div>
 </footer>
 
 <!-- FLOATING CHAT TRIGGER -->
-<button id="chat-btn" class="floating-chat" aria-label="Open AI Assistant Workspace">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="chat-icon" fill="none" aria-hidden="true">
+<button id="chat-btn" class="fixed bottom-10 right-6 z-40 w-14 h-14 bg-purple-600 hover:bg-purple-700 hover:scale-110 active:scale-95 text-white rounded-full flex items-center justify-center shadow-2xl transition-all duration-300" aria-label="Open AI Assistant Workspace">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-7 h-7 text-white" fill="none" aria-hidden="true">
     <path d="M7 4C5.343 4 4 5.343 4 7V13C4 14.657 5.343 16 7 16H8V20L12.5 16H17C18.657 16 20 14.657 20 13V7C20 5.343 18.657 4 17 4H7Z" fill="currentColor"/>
     <rect x="8" y="8" width="8" height="1.5" rx="0.75" fill="white"/>
     <rect x="8" y="11" width="6" height="1.5" rx="0.75" fill="white"/>
@@ -152,22 +171,7 @@ let revealObserver = null;
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => document.querySelectorAll(s);
 
-// Dynamic Script Loader
-function loadScript(src) {
-  return new Promise((resolve, reject) => {
-    if (document.querySelector(`script[src="${src}"]`)) {
-      resolve();
-      return;
-    }
-    const script = document.createElement('script');
-    script.src = src;
-    script.async = true;
-    script.onload = resolve;
-    script.onerror = reject;
-    document.head.appendChild(script);
-  });
-}
-
+// Helper function to build headers
 function getHeaders() {
   const headers = { "Content-Type": "application/json" };
   if (currentUser && currentUser.uid) {
@@ -196,7 +200,7 @@ async function loadAllData() {
     categories.forEach(cat => categoryMap[cat.id] = cat.name);
     await loadFooterSocials();
   } catch(e) { 
-    console.warn("Catalog connection error. Loading offline state:", e); 
+    console.warn("Catalog connection error. Loading offline skeleton states safely:", e); 
   } finally {
     document.body.classList.add('ready');
     renderMainView();
@@ -211,22 +215,11 @@ async function loadFooterSocials() {
     const res = await fetch(API_BASE + "/api/socials");
     const data = await res.json();
     let html = '';
-    // SVG Based Social Icons to avoid external library load
-    if (data.facebook) {
-      html += `<a href="${data.facebook}" target="_blank" rel="noopener noreferrer" class="social-bubble social-bubble-facebook" aria-label="Facebook Profile">
-        <svg class="social-svg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg>
-      </a>`;
-    }
-    if (data.instagram) {
-      html += `<a href="${data.instagram}" target="_blank" rel="noopener noreferrer" class="social-bubble social-bubble-instagram" aria-label="Instagram Profile">
-        <svg class="social-svg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-      </a>`;
-    }
-    if (data.twitter) {
-      html += `<a href="${data.twitter}" target="_blank" rel="noopener noreferrer" class="social-bubble social-bubble-twitter" aria-label="Twitter Profile">
-        <svg class="social-svg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-      </a>`;
-    }
+    if (data.facebook) html += `<a href="${data.facebook}" target="_blank" rel="noopener noreferrer" class="social-bubble social-bubble-facebook" aria-label="Facebook Profile"><i class="fab fa-facebook-f text-black" aria-hidden="true"></i></a>`;
+    if (data.instagram) html += `<a href="${data.instagram}" target="_blank" rel="noopener noreferrer" class="social-bubble social-bubble-instagram" aria-label="Instagram Profile"><i class="fab fa-instagram text-black" aria-hidden="true"></i></a>`;
+    if (data.twitter) html += `<a href="${data.twitter}" target="_blank" rel="noopener noreferrer" class="social-bubble social-bubble-twitter" aria-label="Twitter Profile"><i class="fab fa-twitter-x text-black" aria-hidden="true"></i></a>`;
+    if (data.linkedin) html += `<a href="${data.linkedin}" target="_blank" rel="noopener noreferrer" class="social-bubble social-bubble-linkedin" aria-label="LinkedIn Profile"><i class="fab fa-linkedin-in text-black" aria-hidden="true"></i></a>`;
+    if (data.telegram) html += `<a href="${data.telegram}" target="_blank" rel="noopener noreferrer" class="social-bubble social-bubble-telegram" aria-label="Telegram Channel"><i class="fab fa-telegram-plane text-black" aria-hidden="true"></i></a>`;
     container.innerHTML = html;
   } catch (err) { console.error('Error rendering socials: ', err); }
 }
@@ -249,34 +242,29 @@ function getRatingStarsHTML(rating) {
   if (!rating) return '';
   let stars = '';
   for (let i = 1; i <= 5; i++) {
-    const filled = i <= Math.round(rating);
-    stars += `
-      <svg class="star-icon ${filled ? 'filled' : ''}" viewBox="0 0 24 24" fill="${filled ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" aria-hidden="true">
-        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-      </svg>
-    `;
+    stars += `<i class="${i <= Math.round(rating) ? 'fa-solid fa-star text-yellow-400' : 'fa-regular fa-star text-gray-300'} text-[10px]" aria-hidden="true"></i>`;
   }
-  return `<div class="rating-container">${stars} <span class="rating-text">(${Number(rating).toFixed(1)})</span></div>`;
+  return `<div class="flex items-center gap-0.5 justify-center mt-1">${stars} <span class="text-[9px] text-gray-500 font-medium ml-1">(${Number(rating).toFixed(1)})</span></div>`;
 }
 
 function productCard(product) {
   const disc = discountPercent(product.originalPrice, product.price);
   return `
-  <div class="product-card reveal-on-scroll" onclick="window.goToProductDetail('${product.id}')">
-    <div class="book-cover-wrap">
-      <img src="${product.image ? product.image + '&fm=webp&q=70' : ''}" alt="${product.name}" class="book-cover-img" onerror="this.style.display='none';this.parentElement.style.background='#F3F0FF';" loading="lazy" width="180" height="240">
-      ${product.badge?`<span class="badge-tag uppercase">${product.badge}</span>`:''}
-      ${disc ? `<span class="badge-discount">-${disc}%</span>` : ''}
+  <div class="group cursor-pointer reveal-on-scroll hover-lift text-center" onclick="window.goToProductDetail('${product.id}')">
+    <div class="book-cover-wrap mb-1.5 shadow-sm">
+      <img src="${product.image||''}" alt="${product.name}" class="book-cover-img" onerror="this.style.display='none';this.parentElement.style.background='#F3F0FF';" loading="lazy" width="120" height="160">
+      ${product.badge?`<span class="absolute top-1 left-1 px-1 py-0.5 rounded-full bg-white/90 backdrop-blur-sm text-[7px] font-bold uppercase text-gray-900">${product.badge}</span>`:''}
+      ${disc ? `<span class="absolute top-1 right-1 px-1 py-0.5 rounded-full bg-red-500 text-white text-[7px] font-bold">-${disc}%</span>` : ''}
     </div>
-    <div class="product-info">
-      <h3 class="product-title">${product.name}</h3>
-      <div class="price-row">
-        <span class="price-current">${formatPrice(product.price)}</span>
-        ${product.originalPrice > product.price ? `<span class="price-original">${formatPrice(product.originalPrice)}</span>` : ''}
+    <div class="space-y-0.5 px-0.5">
+      <h3 class="text-[10px] sm:text-xs font-semibold text-gray-900 line-clamp-1">${product.name}</h3>
+      <div class="flex items-center justify-center gap-1.5">
+        <span class="font-bold text-xs sm:text-sm text-gray-900">${formatPrice(product.price)}</span>
+        ${product.originalPrice > product.price ? `<span class="text-[9px] text-gray-500 line-through">${formatPrice(product.originalPrice)}</span>` : ''}
       </div>
       ${product.averageRating ? getRatingStarsHTML(product.averageRating) : ''}
     </div>
-    <button class="add-to-cart-btn btn-primary" data-id="${product.id}" aria-label="Add ${product.name} to Cart">
+    <button class="mt-2 w-full py-2 bg-black hover:bg-gray-800 text-white rounded-lg text-[10px] sm:text-xs font-semibold transition-all flex items-center justify-center gap-1 add-to-cart-btn" data-id="${product.id}" aria-label="Add ${product.name} to Cart">
       <span class="btn-text">Add to Cart</span>
     </button>
   </div>`;
@@ -289,13 +277,10 @@ function attachListeners() {
     const existing = cart.find(i => String(i.id) === id);
     if (existing) existing.qty++; else cart.push({ id, qty: 1 });
     saveCart();
-    b.classList.add('animate-success');
-    b.innerHTML = `
-      <svg class="check-icon" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
-      </svg> Added`;
+    b.classList.add('animate-add-success');
+    b.innerHTML = `<svg class="w-3.5 h-3.5 text-white animate-check-pop" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg> Added`;
     setTimeout(() => {
-      b.classList.remove('animate-success');
+      b.classList.remove('animate-add-success');
       b.innerHTML = '<span class="btn-text">Add to Cart</span>';
     }, 1400);
   });
@@ -305,7 +290,7 @@ function filterProducts(catId) {
   activeCategory = catId; const grid = $('#products-grid'); if (!grid) return;
   let filtered = catId === 'all' ? products : products.filter(p => p.category === catId);
   const sorted = [...filtered].sort((a,b) => (b.reviews||0) - (a.reviews||0));
-  grid.innerHTML = sorted.length ? sorted.map(p => productCard(p)).join('') : '<p class="no-products">No products found</p>';
+  grid.innerHTML = sorted.length ? sorted.map(p => productCard(p)).join('') : '<p class="col-span-full text-center text-gray-500 py-8 text-sm">No products found</p>';
   attachListeners();
   observeReveal();
 }
@@ -313,37 +298,35 @@ function filterProducts(catId) {
 function renderMainView() {
   const main = $('#main-content');
   main.innerHTML = `
-  <section class="hero-section">
-    <div class="hero-bg">
-      <div class="ambient-circle pos-1" aria-hidden="true"></div>
-      <div class="ambient-circle pos-2" aria-hidden="true"></div>
+  <section class="relative w-full rounded-2xl sm:rounded-3xl h-[280px] sm:h-[480px] lg:h-[580px] overflow-hidden mt-2 shadow-lg ring-1 ring-black/5 isolate">
+    <div class="absolute inset-0 bg-[#F3F0FF] overflow-hidden">
+      <div class="absolute top-[-15%] right-[-10%] w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] rounded-full bg-gradient-to-b from-purple-300 via-indigo-300 to-transparent blur-[100px] opacity-60 animate-float-slow mix-blend-multiply" aria-hidden="true"></div>
+      <div class="absolute bottom-[-10%] left-[-10%] w-[250px] sm:w-[450px] h-[250px] sm:h-[450px] rounded-full bg-gradient-to-tr from-violet-400 via-fuchsia-200 to-blue-200 blur-[80px] opacity-50 animate-float-medium mix-blend-multiply" aria-hidden="true"></div>
     </div>
-    <div class="hero-container">
-      <div class="hero-content reveal-on-scroll">
-        <h1 class="hero-title">Your Premier Literary Haven</h1>
-        <p class="hero-subtitle">Selected collections and titles direct to your bookshelf.</p>
-        <a href="#products" class="btn-hero-cta" aria-label="Browse catalog items">
-          <span class="cta-text">Shop Collection</span>
-          <svg viewBox="0 0 48 48" class="arrow-icon" aria-hidden="true">
-            <path d="M16 10L32 24L16 38" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+    <div class="absolute inset-0 flex items-center justify-center text-center px-4">
+      <div class="max-w-md sm:max-w-xl reveal-on-scroll">
+        <h1 class="text-2xl sm:text-4xl lg:text-5xl font-semibold text-gray-900 tracking-tighter mb-3">Your Premier Literary Haven</h1>
+        <p class="text-xs sm:text-base text-gray-600 max-w-xs sm:max-w-lg mx-auto mb-5">Selected collections and titles direct to your bookshelf.</p>
+        <a href="#products" class="inline-flex items-center gap-2.5 bg-white text-gray-900 pl-6 pr-4 py-2.5 rounded-full shadow-lg hover:scale-105 transition-transform active:scale-95" aria-label="Browse catalog items">
+          <span class="text-sm sm:text-base font-extrabold tracking-tight">Shop Collection</span>
+          <svg viewBox="0 0 48 48" class="w-4 h-4 text-gray-800" aria-hidden="true"><path d="M16 10L32 24L16 38" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
     </div>
   </section>
-  <section id="products" class="catalog-section">
-    <h2 class="catalog-heading reveal-on-scroll">Discover Collection</h2>
-    <div class="search-wrap reveal-on-scroll">
-      <input type="text" id="product-search" placeholder="Search by book title, author name or keywords..." class="search-input" aria-label="Search bookstore collections" readonly>
-      <span class="search-icon-container">
-        <svg class="search-svg" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+  <section id="products" class="mt-10 sm:mt-14">
+    <h2 class="text-lg sm:text-2xl font-semibold text-gray-900 reveal-on-scroll mb-3">Discover Collection</h2>
+    <div class="mb-5 relative reveal-on-scroll">
+      <input type="text" id="product-search" placeholder="Search by book title, author name or keywords..." class="w-full px-4 py-3 pr-10 border border-gray-100 bg-gray-50/50 rounded-2xl text-xs outline-none cursor-pointer" aria-label="Search bookstore collections" readonly>
+      <span class="absolute right-3.5 top-3.5 text-gray-400">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
       </span>
     </div>
-    <div class="category-tabs-container" id="category-tabs">
-      <button class="cat-tab active" data-cat="all" aria-label="Show all categories">All</button>
-      ${categories.map(c => `<button class="cat-tab" data-cat="${c.id}" aria-label="Category ${c.name}">${c.name}</button>`).join('')}
+    <div class="flex flex-nowrap gap-1.5 mb-4 overflow-x-auto no-scrollbar pb-1 w-full" id="category-tabs">
+      <span class="cat-tab active" data-cat="all">All</span>
+      ${categories.map(c => `<span class="cat-tab" data-cat="${c.id}">${c.name}</span>`).join('')}
     </div>
-    <div class="products-grid" id="products-grid"></div>
+    <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-2 sm:gap-2.5" id="products-grid"></div>
   </section>`;
 
   $$('.cat-tab').forEach(tab => {
@@ -365,13 +348,13 @@ window.openSearchOverlay = function() {
   const existing = document.querySelector('#search-overlay-page'); if (existing) existing.remove();
   const overlay = document.createElement('div'); overlay.id = 'search-overlay-page'; overlay.className = 'full-page-overlay';
   overlay.innerHTML = `
-  <div class="overlay-inner max-w-2xl">
-    <div class="overlay-header">
-      <input id="overlay-search-input" type="text" placeholder="Search books..." class="search-overlay-input" aria-label="Enter book search parameters">
+  <div class="flex flex-col h-full w-full max-w-2xl mx-auto bg-white">
+    <div class="flex items-center gap-3 px-5 py-4 border-b bg-white sticky top-0 z-10">
+      <input id="overlay-search-input" type="text" placeholder="Search books..." class="w-full px-4 py-3 pr-10 border border-purple-100 bg-purple-50/20 rounded-2xl text-xs outline-none" aria-label="Enter book search parameters">
       <button id="close-search-overlay" class="close-btn" aria-label="Close search window">Close</button>
     </div>
-    <div class="overlay-body">
-      <div id="overlay-search-results-grid" class="search-results-grid"></div>
+    <div class="flex-1 overflow-y-auto p-5 bg-white">
+      <div id="overlay-search-results-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-3"></div>
     </div>
   </div>`;
   
@@ -386,9 +369,9 @@ window.openSearchOverlay = function() {
     const q = input.value.trim().toLowerCase(); if (!q) { grid.innerHTML = ''; return; }
     const filtered = products.filter(p => p.name.toLowerCase().includes(q) || (p.author && p.author.toLowerCase().includes(q)));
     grid.innerHTML = filtered.map(p => `
-      <div class="search-result-item" onclick="window.goToProductDetail('${p.id}')">
-        <div class="mini-cover-wrap"><img src="${p.image ? p.image + '&fm=webp&q=60' : ''}" alt="${p.name}" class="mini-cover-img" loading="lazy" width="80" height="110"></div>
-        <h3 class="mini-title">${p.name}</h3>
+      <div class="group cursor-pointer hover-lift text-center" onclick="window.goToProductDetail('${p.id}')">
+        <div class="book-cover-wrap mb-1.5 shadow-sm"><img src="${p.image||''}" alt="${p.name}" class="book-cover-img" loading="lazy" width="120" height="160"></div>
+        <h3 class="text-[10px] sm:text-xs font-semibold text-gray-900">${p.name}</h3>
       </div>`).join('');
   };
 };
@@ -399,41 +382,37 @@ window.goToProductDetail = async function(id) {
   const existing = document.querySelector('.full-page-overlay'); if (existing) existing.remove();
   const overlay = document.createElement('div'); overlay.className = 'full-page-overlay';
   overlay.innerHTML = `
-  <div class="overlay-inner max-w-2xl">
-    <div class="overlay-header justify-between">
-      <h2 class="overlay-title">Details</h2>
+  <div class="flex flex-col h-full w-full max-w-2xl mx-auto bg-white">
+    <div class="flex items-center justify-between px-5 py-4 border-b bg-white sticky top-0 z-10">
+      <h2 class="text-base font-bold text-gray-900">Details</h2>
       <button id="close-product-overlay" class="close-btn" aria-label="Close product details">Close</button>
     </div>
-    <div class="overlay-body pb-10">
-      <div class="details-cover-wrap"><img src="${product.image ? product.image + '&fm=webp&q=80' : ''}" alt="${product.name}" class="details-cover-img" loading="lazy" width="240" height="320"></div>
-      <div class="details-meta-row">
-        <h1 class="details-title font-serif">${product.name}</h1>
-        <button id="overlay-wishlist" class="wishlist-toggle-btn" aria-label="Toggle Wishlist">
-          <svg class="heart-icon ${isWish ? 'filled' : ''}" viewBox="0 0 24 24" fill="${isWish ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-          </svg>
-        </button>
+    <div class="overlay-scroll pb-10 px-6 py-6 space-y-5">
+      <div class="book-cover-wrap max-w-[240px] mx-auto shadow-md"><img src="${product.image||''}" alt="${product.name}" class="book-cover-img" loading="lazy" width="180" height="240"></div>
+      <div class="flex justify-between items-start">
+        <h1 class="text-xl font-serif font-bold text-gray-900">${product.name}</h1>
+        <button id="overlay-wishlist" class="w-10 h-10 rounded-full flex items-center justify-center bg-gray-100" aria-label="Toggle Wishlist"><i class="fa-solid fa-heart ${isWish?'text-red-500':'text-gray-400'}" aria-hidden="true"></i></button>
       </div>
-      <p class="details-price">${formatPrice(product.price)}</p>
-      <div class="details-specs">
-        <p><span class="label">Author:</span> ${product.author||'Unknown'}</p>
-        <p><span class="label">Stock:</span> ${getStockDisplay(product.stock)}</p>
-        <p class="description">${product.desc||'No details available.'}</p>
+      <p class="text-2xl font-bold text-gray-900">${formatPrice(product.price)}</p>
+      <div class="border-t pt-4 text-xs space-y-1">
+        <p><span class="font-bold text-gray-500">Author:</span> ${product.author||'Unknown'}</p>
+        <p><span class="font-bold text-gray-500">Stock:</span> ${getStockDisplay(product.stock)}</p>
+        <p class="text-gray-600 mt-2">${product.desc||'No details available.'}</p>
       </div>
-      <div class="details-reviews-section">
-        <p class="section-title">Customer Reviews</p>
-        <div id="compiled-product-reviews" class="reviews-list">Loading reviews...</div>
-        <div id="submission-review-box" class="review-form hidden">
-          <p class="form-title">Write feedback</p>
-          <input type="number" id="review-rating-input" min="1" max="5" placeholder="Rating (1-5)" class="form-input" aria-label="Review rating value between 1 and 5">
-          <textarea id="review-comment-input" rows="3" placeholder="Review details..." class="form-textarea" aria-label="Review detailed feedback description"></textarea>
-          <button id="post-review-btn" class="btn-primary w-full" aria-label="Submit review data">Submit</button>
+      <div class="border-t pt-4">
+        <p class="text-xs font-bold text-gray-500 mb-3">Customer Reviews</p>
+        <div id="compiled-product-reviews" class="space-y-3 text-xs text-gray-500">Loading reviews...</div>
+        <div id="submission-review-box" class="mt-4 p-4 bg-gray-50 rounded-2xl border border-gray-100 hidden">
+          <p class="text-xs font-bold mb-2">Write feedback</p>
+          <input type="number" id="review-rating-input" min="1" max="5" placeholder="Rating (1-5)" class="w-full p-2 border rounded-xl text-xs mb-2" aria-label="Review rating value between 1 and 5">
+          <textarea id="review-comment-input" rows="3" placeholder="Review details..." class="w-full p-3 border rounded-xl text-xs outline-none bg-white" aria-label="Review detailed feedback description"></textarea>
+          <button id="post-review-btn" class="mt-2 w-full py-2.5 bg-black text-white rounded-xl text-xs font-semibold" aria-label="Submit review data">Submit</button>
         </div>
       </div>
     </div>
-    <div class="overlay-footer">
-      <button class="btn-primary flex-1 add-to-cart-btn" data-id="${product.id}" aria-label="Add book to cart">Add to Cart</button>
-      <button class="btn-secondary flex-1 buy-now-btn" data-id="${product.id}" aria-label="Instantly purchase book">Buy Now</button>
+    <div class="border-t p-4 flex gap-3 bg-white sticky bottom-0 w-full max-w-2xl mx-auto">
+      <button class="flex-1 py-3 bg-black text-white rounded-xl font-semibold text-xs add-to-cart-btn" data-id="${product.id}" aria-label="Add book to cart">Add to Cart</button>
+      <button class="flex-1 py-3 bg-purple-600 text-white rounded-xl font-semibold text-xs buy-now-btn" data-id="${product.id}" aria-label="Instantly purchase book">Buy Now</button>
     </div>
   </div>`;
 
@@ -459,17 +438,18 @@ window.goToProductDetail = async function(id) {
     window.closeOverlay(overlay); openCheckout([{ id: product.id, qty: 1 }], product.price);
   };
 
+  // Fetch reviews from API
   const reviewContainer = overlay.querySelector('#compiled-product-reviews');
   try {
     const res = await fetch(API_BASE + `/api/reviews/${product.id}`);
     const rData = await res.json();
     if (rData.length === 0) {
-      reviewContainer.innerHTML = '<p class="empty-review">No reviews yet.</p>';
+      reviewContainer.innerHTML = 'No reviews yet.';
     } else {
       reviewContainer.innerHTML = rData.map(r => `
-        <div class="review-item">
-          <p class="review-author">${r.userName} (${r.rating}/5)</p>
-          <p class="review-text">${r.text}</p>
+        <div class="border-b pb-2">
+          <p class="font-bold">${r.userName} (${r.rating}/5)</p>
+          <p class="text-gray-600 mt-1">${r.text}</p>
         </div>`).join('');
     }
   } catch(e) { reviewContainer.innerHTML = 'Reviews offline.'; }
@@ -505,41 +485,40 @@ window.openCheckout = async function(items, subtotal) {
   let itemsHtml = items.map(item => {
     const p = products.find(prod => prod.id === item.id);
     return p ? `
-      <div class="checkout-item" data-id="${p.id}" data-price="${p.price}">
-        <img src="${p.image ? p.image + '&fm=webp&q=60' : ''}" alt="${p.name}" class="checkout-item-img" loading="lazy" width="50" height="66">
-        <div class="checkout-item-details">
-          <p class="item-title">${p.name}</p>
-          <span class="item-qty">Qty: ${item.qty}</span>
+      <div class="checkout-item flex gap-3 items-center bg-gray-50 rounded-xl p-3" data-id="${p.id}" data-price="${p.price}">
+        <img src="${p.image||''}" alt="${p.name}" class="custom-cart-wish-img" loading="lazy" width="50" height="66">
+        <div class="flex-1"><p class="text-xs font-medium text-gray-900">${p.name}</p>
+          <div class="flex items-center gap-2 mt-1"><span class="text-[10px] text-gray-500">Qty: ${item.qty}</span></div>
         </div>
-        <p class="item-total-price">${formatPrice(p.price * item.qty)}</p>
+        <p class="text-xs font-bold item-total">${formatPrice(p.price*item.qty)}</p>
       </div>` : '';
   }).join('');
 
   overlay.innerHTML = `
-  <div class="overlay-inner max-w-2xl">
-    <div class="overlay-header justify-between">
-      <h2 class="overlay-title font-serif">Checkout</h2>
+  <div class="flex flex-col h-full w-full max-w-2xl mx-auto bg-white">
+    <div class="flex items-center justify-between px-5 py-4 border-b bg-white sticky top-0 z-10">
+      <h2 class="text-base font-bold text-gray-900 font-serif">Checkout</h2>
       <button id="cancel-checkout" class="close-btn" aria-label="Cancel active checkout process">Close</button>
     </div>
-    <div class="overlay-body">
-      <div class="checkout-items-list">${itemsHtml}</div>
-      <div class="checkout-form">
-        <p class="form-section-title">Shipping Details</p>
-        <input id="ch-name" placeholder="Full Name" class="form-input" aria-label="Shipping Full Name">
-        <input id="ch-email" type="email" placeholder="Email" class="form-input" aria-label="Shipping Email Address">
-        <input id="ch-mobile" type="tel" placeholder="Mobile Number" class="form-input" aria-label="Shipping Mobile Contact Phone">
-        <input id="ch-address" placeholder="Address" class="form-input" aria-label="Shipping Street Address">
-        <div class="form-grid-2">
-          <input id="ch-city" placeholder="City" class="form-input" aria-label="Shipping City">
-          <input id="ch-zip" placeholder="Pincode" class="form-input" aria-label="Shipping ZIP Pincode">
+    <div class="overlay-scroll p-5 space-y-4">
+      <div class="space-y-2.5">${itemsHtml}</div>
+      <div class="space-y-3 pt-3 border-t">
+        <p class="text-xs font-bold uppercase tracking-wider text-gray-500">Shipping Details</p>
+        <input id="ch-name" placeholder="Full Name" class="w-full px-4 py-3 border rounded-xl text-xs outline-none" aria-label="Shipping Full Name">
+        <input id="ch-email" type="email" placeholder="Email" class="w-full px-4 py-3 border rounded-xl text-xs outline-none" aria-label="Shipping Email Address">
+        <input id="ch-mobile" type="tel" placeholder="Mobile Number" class="w-full px-4 py-3 border rounded-xl text-xs outline-none" aria-label="Shipping Mobile Contact Phone">
+        <input id="ch-address" placeholder="Address" class="w-full px-4 py-3 border rounded-xl text-xs outline-none" aria-label="Shipping Street Address">
+        <div class="flex gap-2">
+          <input id="ch-city" placeholder="City" class="w-1/2 px-4 py-3 border rounded-xl text-xs outline-none" aria-label="Shipping City">
+          <input id="ch-zip" placeholder="Pincode" class="w-1/2 px-4 py-3 border rounded-xl text-xs outline-none" aria-label="Shipping ZIP Pincode">
         </div>
       </div>
-      <div class="checkout-summary-row">
-        <span>Total</span><span id="order-total" class="grand-total">${formatPrice(subtotal)}</span>
+      <div class="space-y-2 pt-3 border-t">
+        <div class="flex justify-between text-xs text-gray-900 font-bold"><span>Total</span><span id="order-total">${formatPrice(subtotal)}</span></div>
       </div>
     </div>
-    <div class="overlay-footer">
-      <button id="confirm-order" class="btn-secondary w-full" aria-label="Process order payment">Confirm & Pay</button>
+    <div class="border-t p-4 bg-white sticky bottom-0 w-full max-w-2xl mx-auto">
+      <button id="confirm-order" class="w-full py-3.5 bg-purple-600 text-white rounded-xl font-bold text-xs" aria-label="Process order payment">Confirm & Pay</button>
     </div>
   </div>`;
 
@@ -555,13 +534,6 @@ window.openCheckout = async function(items, subtotal) {
     const zip = $('#ch-zip').value.trim();
 
     if (!name || !email || !mobile || !address || !city || !zip) return showAlert('Please fill out all fields.');
-
-    // Dynamic library call only when user initiates checkout payment (Performance Rules)
-    try {
-      await loadScript("https://checkout.razorpay.com/v1/checkout.js");
-    } catch (e) {
-      return showAlert("Payment gateway failed to load. Please try again.");
-    }
 
     const configRes = await fetch(API_BASE + "/api/config");
     const configData = await configRes.json();
@@ -601,12 +573,12 @@ window.openTracking = async function() {
   const existing = document.querySelector('.full-page-overlay'); if (existing) existing.remove();
   const overlay = document.createElement('div'); overlay.className = 'full-page-overlay';
   overlay.innerHTML = `
-  <div class="overlay-inner max-w-2xl">
-    <div class="overlay-header justify-between">
-      <h2 class="overlay-title">Tracking</h2>
+  <div class="flex flex-col h-full w-full max-w-2xl mx-auto bg-white">
+    <div class="flex items-center justify-between px-5 py-4 border-b bg-white sticky top-0 z-10">
+      <h2 class="text-base font-bold text-gray-900">Tracking</h2>
       <button id="close-tracking" class="close-btn" aria-label="Close tracking view">Close</button>
     </div>
-    <div class="overlay-body" id="orders-list">Loading orders...</div>
+    <div class="overlay-scroll p-5 space-y-4" id="orders-list">Loading orders...</div>
   </div>`;
 
   document.body.appendChild(overlay); document.body.style.overflow = 'hidden';
@@ -617,12 +589,12 @@ window.openTracking = async function() {
     const oData = await res.json();
     const list = overlay.querySelector('#orders-list');
     if (oData.length === 0) {
-      list.innerHTML = '<p class="empty-message">No active orders found.</p>';
+      list.innerHTML = 'No active orders found.';
     } else {
       list.innerHTML = oData.map(o => `
-        <div class="order-tracking-card">
-          <p class="order-id">#${o.id.slice(-6).toUpperCase()} (${o.status.toUpperCase()})</p>
-          <p class="order-price">Paid: ${formatPrice(o.total)}</p>
+        <div class="border border-gray-100 rounded-2xl p-4 bg-white shadow-sm space-y-2">
+          <p class="font-bold text-xs">#${o.id.slice(-6).toUpperCase()} (${o.status.toUpperCase()})</p>
+          <p class="text-[10px] text-gray-500">Paid: ${formatPrice(o.total)}</p>
         </div>`).join('');
     }
   } catch(e) { overlay.querySelector('#orders-list').innerHTML = 'Tracking unavailable.'; }
@@ -632,15 +604,15 @@ function renderCartOverlay() {
   const existing = document.querySelector('#cart-overlay-page'); if (existing) existing.remove();
   const overlay = document.createElement('div'); overlay.id = 'cart-overlay-page'; overlay.className = 'full-page-overlay';
   overlay.innerHTML = `
-  <div class="overlay-inner max-w-2xl">
-    <div class="overlay-header justify-between">
-      <h2 class="overlay-title">Your Bag</h2>
+  <div class="flex flex-col h-full w-full max-w-2xl mx-auto bg-white">
+    <div class="flex items-center justify-between px-5 py-4 border-b bg-white sticky top-0 z-10">
+      <h2 class="text-base font-bold text-gray-900">Your Bag</h2>
       <button id="cart-close-overlay" class="close-btn" aria-label="Close shopping bag panel">Close</button>
     </div>
-    <div id="cart-items-list" class="overlay-body"></div>
-    <div class="overlay-bottom-sticky">
-      <div class="sticky-summary-row"><span>Subtotal</span><span id="cart-subtotal-overlay">₹0.00</span></div>
-      <button id="cart-checkout-all" class="btn-primary w-full" aria-label="Checkout all items in cart">Checkout Entire Bag</button>
+    <div id="cart-items-list" class="flex-1 overflow-y-auto p-5 space-y-3"></div>
+    <div class="border-t p-5 bg-white sticky bottom-0 space-y-4">
+      <div class="flex justify-between items-center text-xs"><span>Subtotal</span><span id="cart-subtotal-overlay">₹0.00</span></div>
+      <button id="cart-checkout-all" class="w-full py-3.5 bg-black text-white rounded-xl font-bold text-xs" aria-label="Checkout all items in cart">Checkout Entire Bag</button>
     </div>
   </div>`;
 
@@ -651,19 +623,19 @@ function renderCartOverlay() {
   const validCart = cart.filter(item => products.some(p => String(p.id) === String(item.id)));
   
   if (validCart.length === 0) {
-    container.innerHTML = '<p class="empty-message">Your bag is empty.</p>';
+    container.innerHTML = '<p class="text-center py-16 text-xs text-gray-400">Your bag is empty.</p>';
     overlay.querySelector('#cart-checkout-all').style.display = 'none';
   } else {
     container.innerHTML = validCart.map(item => {
       const p = products.find(pr => String(pr.id) === String(item.id));
       return `
-      <div class="cart-item-card">
-        <img src="${p.image ? p.image + '&fm=webp&q=60' : ''}" alt="${p.name}" class="cart-item-img" loading="lazy" width="50" height="66">
-        <div class="cart-item-info">
-          <p class="cart-item-title">${p.name}</p>
-          <p class="cart-item-meta">${formatPrice(p.price)} &times; ${item.qty}</p>
+      <div class="flex gap-4 items-center bg-gray-50 rounded-2xl p-3 border">
+        <img src="${p.image||''}" alt="${p.name}" class="custom-cart-wish-img" loading="lazy" width="50" height="66">
+        <div class="flex-1 min-w-0">
+          <p class="text-xs font-bold text-gray-900 truncate">${p.name}</p>
+          <p class="text-[10px] text-gray-500 mt-0.5">${formatPrice(p.price)} &times; ${item.qty}</p>
         </div>
-        <button class="remove-cart-item" data-id="${item.id}" aria-label="Remove item from cart">Remove</button>
+        <button class="text-red-500 text-xs remove-cart-item" data-id="${item.id}" aria-label="Remove item from cart">Remove</button>
       </div>`;
     }).join('');
 
@@ -685,12 +657,12 @@ function renderWishlistOverlay() {
   const existing = document.querySelector('#wishlist-overlay-page'); if (existing) existing.remove();
   const overlay = document.createElement('div'); overlay.id = 'wishlist-overlay-page'; overlay.className = 'full-page-overlay';
   overlay.innerHTML = `
-  <div class="overlay-inner max-w-2xl">
-    <div class="overlay-header justify-between">
-      <h2 class="overlay-title">Your Wishlist</h2>
+  <div class="flex flex-col h-full w-full max-w-2xl mx-auto bg-white">
+    <div class="flex items-center justify-between px-5 py-4 border-b bg-white sticky top-0 z-10">
+      <h2 class="text-base font-bold text-gray-900">Your Wishlist</h2>
       <button id="wl-close-overlay" class="close-btn" aria-label="Close wishlist panel">Close</button>
     </div>
-    <div id="wl-items-list" class="overlay-body"></div>
+    <div id="wl-items-list" class="flex-1 overflow-y-auto p-5 space-y-3"></div>
   </div>`;
 
   document.body.appendChild(overlay); document.body.style.overflow = 'hidden';
@@ -700,18 +672,18 @@ function renderWishlistOverlay() {
   const validWishlist = wishlist.filter(id => products.some(p => String(p.id) === String(id)));
   
   if (validWishlist.length === 0) {
-    container.innerHTML = '<p class="empty-message">Your wishlist is empty.</p>';
+    container.innerHTML = '<p class="text-center py-16 text-xs text-gray-400">Your wishlist is empty.</p>';
   } else {
     container.innerHTML = validWishlist.map(id => {
       const p = products.find(pr => String(pr.id) === String(id));
       return `
-      <div class="cart-item-card">
-        <img src="${p.image ? p.image + '&fm=webp&q=60' : ''}" alt="${p.name}" class="cart-item-img" loading="lazy" width="50" height="66">
-        <div class="cart-item-info">
-          <p class="cart-item-title">${p.name}</p>
-          <p class="cart-item-meta">${formatPrice(p.price)}</p>
+      <div class="flex gap-4 items-center bg-gray-50 rounded-2xl p-3 border">
+        <img src="${p.image||''}" alt="${p.name}" class="custom-cart-wish-img" loading="lazy" width="50" height="66">
+        <div class="flex-1 min-w-0">
+          <p class="text-xs font-bold text-gray-900 truncate">${p.name}</p>
+          <p class="text-[10px] text-gray-500 mt-0.5">${formatPrice(p.price)}</p>
         </div>
-        <button class="remove-wish-item" data-id="${p.id}" aria-label="Remove item from wishlist">Remove</button>
+        <button class="text-red-500 text-xs remove-wish-item" data-id="${p.id}" aria-label="Remove item from wishlist">Remove</button>
       </div>`;
     }).join('');
 
@@ -725,22 +697,22 @@ function openChatOverlay() {
   const existing = document.querySelector('#chat-overlay-page'); if (existing) existing.remove();
   const overlay = document.createElement('div'); overlay.id = 'chat-overlay-page'; overlay.className = 'full-page-overlay';
   overlay.innerHTML = `
-  <div class="overlay-inner max-w-2xl">
-    <div class="overlay-header-chat">
-      <div class="chat-top-row">
-        <h2 class="chat-main-title" id="chat-header-title">AI Book Assistant</h2>
+  <div class="flex flex-col h-full w-full max-w-2xl mx-auto bg-white">
+    <div class="flex flex-col gap-3 px-5 py-4 border-b bg-white sticky top-0 z-10 shadow-sm">
+      <div class="flex items-center justify-between w-full">
+        <h2 class="text-sm font-bold text-gray-900" id="chat-header-title">AI Book Assistant</h2>
         <button id="chat-close-overlay" class="close-btn" aria-label="Close active chat session">Close</button>
       </div>
-      <div class="chat-tabs">
-        <button id="chat-tab-admin" class="chat-tab-btn" aria-label="Switch chat to live helpdesk admin">Chat With Admin</button>
-        <button id="chat-tab-ai" class="chat-tab-btn active" aria-label="Switch chat to AI Assistant">AI Assistant</button>
+      <div class="flex gap-2 p-1 bg-gray-100 rounded-2xl w-full max-w-md mx-auto">
+        <button id="chat-tab-admin" class="flex-1 py-2 text-xs font-bold rounded-xl transition-all bg-transparent text-gray-500" aria-label="Switch chat to live helpdesk admin">Chat With Admin</button>
+        <button id="chat-tab-ai" class="flex-1 py-2 text-xs font-bold rounded-xl transition-all bg-purple-600 text-white" aria-label="Switch chat to AI Assistant">AI Assistant</button>
       </div>
     </div>
-    <div id="chat-messages-area" class="overlay-body chat-messages-bg"></div>
-    <div class="chat-input-sticky">
-      <div class="chat-input-wrapper">
-        <input id="chat-input-overlay" placeholder="Send a message..." class="chat-text-input" aria-label="Type your message description">
-        <button id="send-msg-overlay" class="chat-send-btn" aria-label="Send your message">Send</button>
+    <div id="chat-messages-area" class="flex-1 overflow-y-auto p-5 bg-gray-50/50 space-y-3.5"></div>
+    <div class="border-t p-3 bg-white sticky bottom-0">
+      <div class="flex gap-2 items-center bg-gray-50 rounded-xl px-3 py-1 border">
+        <input id="chat-input-overlay" placeholder="Send a message..." class="flex-1 bg-transparent py-2 outline-none text-xs text-gray-900" aria-label="Type your message description">
+        <button id="send-msg-overlay" class="w-8 h-8 bg-purple-600 text-white rounded-lg flex items-center justify-center" aria-label="Send your message">Send</button>
       </div>
     </div>
   </div>`;
@@ -756,8 +728,8 @@ function openChatOverlay() {
 
   const renderAiChat = () => {
     cont.innerHTML = aiHistory.map(m => `
-      <div class="chat-bubble-container ${m.role === 'assistant' ? 'assistant' : 'user'}">
-        <div class="chat-bubble">
+      <div class="flex ${m.role === 'assistant' ? 'justify-start' : 'justify-end'}">
+        <div class="max-w-[80%] px-4 py-3 rounded-2xl text-xs ${m.role === 'assistant' ? 'bg-white text-gray-800' : 'bg-purple-600 text-white'} shadow-sm">
           ${m.content}
         </div>
       </div>`).join('');
@@ -767,15 +739,15 @@ function openChatOverlay() {
   tabAdmin.onclick = () => {
     if (!currentUser) return showAlert("Please log in first.");
     mode = 'admin';
-    tabAdmin.classList.add('active');
-    tabAi.classList.remove('active');
-    cont.innerHTML = '<p class="chat-status">Connecting to Admin live desk...</p>';
+    tabAdmin.className = "flex-1 py-2 text-xs font-bold rounded-xl transition-all bg-purple-600 text-white";
+    tabAi.className = "flex-1 py-2 text-xs font-bold rounded-xl transition-all bg-transparent text-gray-500";
+    cont.innerHTML = 'Connecting to Admin live desk...';
   };
 
   tabAi.onclick = () => {
     mode = 'ai';
-    tabAi.classList.add('active');
-    tabAdmin.classList.remove('active');
+    tabAi.className = "flex-1 py-2 text-xs font-bold rounded-xl transition-all bg-purple-600 text-white";
+    tabAdmin.className = "flex-1 py-2 text-xs font-bold rounded-xl transition-all bg-transparent text-gray-500";
     renderAiChat();
   };
 
@@ -806,7 +778,7 @@ function openChatOverlay() {
           headers: getHeaders(),
           body: JSON.stringify({ mode, text, userId: currentUser.uid })
         });
-        cont.innerHTML += `<div class="chat-bubble-container user"><div class="chat-bubble">${text}</div></div>`;
+        cont.innerHTML += `<div class="flex justify-end"><div class="bg-purple-600 text-white px-4 py-3 rounded-2xl text-xs">${text}</div></div>`;
       } catch(e) {}
     }
   };
@@ -820,16 +792,16 @@ window.openProfileOverlay = function() {
   
   if (currentUser) {
     overlay.innerHTML = `
-    <div class="overlay-inner max-w-2xl">
-      <div class="overlay-header justify-between">
-        <h2 class="overlay-title font-serif">Account</h2>
+    <div class="flex flex-col h-full w-full max-w-2xl mx-auto bg-white">
+      <div class="flex items-center justify-between px-5 py-4 border-b bg-white sticky top-0 z-10">
+        <h2 class="text-base font-bold text-gray-900 font-serif">Account</h2>
         <button id="close-profile" class="close-btn" aria-label="Close profile dashboard">Close</button>
       </div>
-      <div class="overlay-body">
-        <div class="profile-card">
-          <p class="profile-name">${currentUser.name || 'Member'} (${currentUser.email})</p>
+      <div class="overlay-scroll p-6 space-y-6 text-left">
+        <div class="bg-purple-50 rounded-2xl p-6 border flex items-center gap-4">
+          <div class="font-bold text-slate-950">${currentUser.name || 'Member'} (${currentUser.email})</div>
         </div>
-        <button id="do-logout" class="btn-logout" aria-label="Log out of session">Log Out</button>
+        <button id="do-logout" class="w-full py-3 border border-red-200 text-red-600 rounded-xl text-xs font-bold transition-all" aria-label="Log out of session">Log Out</button>
       </div>
     </div>`;
 
@@ -841,16 +813,16 @@ window.openProfileOverlay = function() {
     };
   } else {
     overlay.innerHTML = `
-    <div class="overlay-inner max-w-2xl">
-      <div class="overlay-header justify-between">
-        <h2 class="overlay-title">Login</h2>
+    <div class="flex flex-col h-full w-full max-w-2xl mx-auto bg-white">
+      <div class="flex items-center justify-between px-5 py-4 border-b bg-white sticky top-0 z-10">
+        <h2 class="text-base font-bold text-gray-900">Login</h2>
         <button id="close-profile-overlay" class="close-btn" aria-label="Close login overlay">Close</button>
       </div>
-      <div class="overlay-body">
-        <input id="login-email" type="email" placeholder="example@shobdotori.com" class="form-input" aria-label="Account Login Email">
-        <input id="login-pass" type="password" placeholder="Password" class="form-input" aria-label="Account Login Password">
-        <button id="do-login" class="btn-primary w-full" aria-label="Submit login session credentials">Login</button>
-        <button id="signup-link" class="link-switch" aria-label="Proceed to register a new account">Create Account</button>
+      <div class="overlay-scroll p-6 space-y-4 text-left">
+        <input id="login-email" type="email" placeholder="example@shobdotori.com" class="w-full px-4 py-3 border rounded-xl text-xs outline-none" aria-label="Account Login Email">
+        <input id="login-pass" type="password" placeholder="Password" class="w-full px-4 py-3 border rounded-xl text-xs outline-none" aria-label="Account Login Password">
+        <button id="do-login" class="w-full py-3 bg-black text-white rounded-xl text-xs font-semibold" aria-label="Submit login session credentials">Login</button>
+        <button id="signup-link" class="w-full text-xs text-center text-gray-500 underline" aria-label="Proceed to register a new account">Create Account</button>
       </div>
     </div>`;
 
@@ -889,16 +861,16 @@ window.openSignupOverlay = function() {
   const existing = document.querySelector('.full-page-overlay'); if (existing) existing.remove();
   const overlay = document.createElement('div'); overlay.className = 'full-page-overlay';
   overlay.innerHTML = `
-  <div class="overlay-inner max-w-2xl">
-    <div class="overlay-header justify-between">
-      <h2 class="overlay-title">Create Account</h2>
+  <div class="flex flex-col h-full w-full max-w-2xl mx-auto bg-white">
+    <div class="flex items-center justify-between px-5 py-4 border-b bg-white sticky top-0 z-10">
+      <h2 class="text-base font-bold text-gray-900">Create Account</h2>
       <button id="close-signup" class="close-btn" aria-label="Close registration overlay">Close</button>
     </div>
-    <div class="overlay-body">
-      <input id="su-name" placeholder="Full Name" class="form-input" aria-label="Register Full Name">
-      <input id="su-email" type="email" placeholder="Email" class="form-input" aria-label="Register Email Address">
-      <input id="su-pass" type="password" placeholder="Password" class="form-input" aria-label="Register Account Password">
-      <button id="do-signup" class="btn-primary w-full" aria-label="Submit registration details">Sign Up</button>
+    <div class="overlay-scroll p-6 space-y-4 text-left">
+      <input id="su-name" placeholder="Full Name" class="w-full px-4 py-3 border rounded-xl text-xs outline-none" aria-label="Register Full Name">
+      <input id="su-email" type="email" placeholder="Email" class="w-full px-4 py-3 border rounded-xl text-xs outline-none" aria-label="Register Email Address">
+      <input id="su-pass" type="password" placeholder="Password" class="w-full px-4 py-3 border rounded-xl text-xs outline-none" aria-label="Register Account Password">
+      <button id="do-signup" class="w-full py-3 bg-black text-white rounded-xl text-xs font-semibold" aria-label="Submit registration details">Sign Up</button>
     </div>
   </div>`;
 
@@ -930,15 +902,15 @@ window.openOtpVerificationOverlay = function(email, name) {
   const existing = document.querySelector('.full-page-overlay'); if (existing) existing.remove();
   const overlay = document.createElement('div'); overlay.className = 'full-page-overlay';
   overlay.innerHTML = `
-  <div class="overlay-inner max-w-2xl">
-    <div class="overlay-header justify-between">
-      <h2 class="overlay-title">Email Activation</h2>
+  <div class="flex flex-col h-full w-full max-w-2xl mx-auto bg-white">
+    <div class="flex items-center justify-between px-5 py-4 border-b bg-white sticky top-0 z-10">
+      <h2 class="text-base font-bold text-gray-900">Email Activation</h2>
       <button id="close-otp" class="close-btn" aria-label="Close OTP panel">Close</button>
     </div>
-    <div class="overlay-body text-center">
-      <input id="otp-code" type="text" maxlength="6" placeholder="Enter 6-digit OTP" class="form-input text-center" aria-label="6-digit OTP verification code field">
-      <button id="verify-otp-btn" class="btn-secondary w-full" aria-label="Submit verification code">Verify Code</button>
-      <button id="resend-otp-btn" class="btn-outline w-full" aria-label="Request a new OTP code to be sent">Resend Code</button>
+    <div class="overlay-scroll p-6 space-y-4 text-center">
+      <input id="otp-code" type="text" maxlength="6" placeholder="Enter 6-digit OTP" class="w-full text-center px-4 py-3 border rounded-xl text-xs outline-none" aria-label="6-digit OTP verification code field">
+      <button id="verify-otp-btn" class="w-full py-3 bg-purple-600 text-white rounded-xl text-xs font-bold" aria-label="Submit verification code">Verify Code</button>
+      <button id="resend-otp-btn" class="w-full py-2.5 border rounded-xl text-xs" aria-label="Request a new OTP code to be sent">Resend Code</button>
     </div>
   </div>`;
 
@@ -999,7 +971,7 @@ function showAlert(msg) {
   container.innerHTML = `
     <div class="alert-modal-bg"></div>
     <div class="alert-modal-content">
-      <p class="alert-message">${msg}</p>
+      <p class="text-sm mb-4 font-semibold text-gray-800">${msg}</p>
       <button class="close-btn close-alert">Dismiss</button>
     </div>`;
   document.body.appendChild(container);
