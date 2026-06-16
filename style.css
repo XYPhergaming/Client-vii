@@ -1192,7 +1192,7 @@ body.ready {
 
 .chat-bubble {
   max-width: 80%;
-  padding: 0.625rem 0.875rem;
+  padding: .625rem .875rem;
   border-radius: 1rem;
   font-size: 0.75rem;
   line-height: 1.4;

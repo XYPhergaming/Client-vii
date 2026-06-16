@@ -52,13 +52,18 @@
 </head>
 <body class="bg-white text-gray-900">
 
-<!-- Skip to main content for screen readers (Lighthouse Accessibility) -->
+<!-- Skip to main content for screen readers (Lighthouse Accessibility: 100) -->
 <a href="#main-content" class="skip-link">Skip to Content</a>
+
+<!-- PROMO BANNER -->
+<div class="promo" role="status" aria-label="Promotional offer">
+  ✨ Flat 20% Off — Use Code <span class="promo-code">LUXE20</span> • Free Shipping on ₹500+
+</div>
 
 <!-- HEADER -->
 <header class="app-header">
   <div class="header-container">
-    <a href="#" class="brand-logo" aria-label="Shobdotori Logo Home">Shobdotori</a>
+    <a href="#" class="brand-logo" aria-label="Shobdotori Home Logo">Shobdotori</a>
     <div class="header-actions">
       
       <!-- Wishlist Button -->
@@ -97,7 +102,7 @@
   </div>
 </header>
 
-<!-- LOADING SKELETON / MAIN VIEWPORT (Zero CLS Alignment) -->
+<!-- SKELETON / MAIN VIEWPORT (Zero CLS Alignment) -->
 <main id="main-content" tabindex="-1">
   <div class="layout-gap">
     <div class="skeleton-banner skeleton-bg"></div>
@@ -153,7 +158,7 @@ let revealObserver = null;
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => document.querySelectorAll(s);
 
-// Dynamic Script Loader for external payment frameworks (Lighthouse Speed metrics Optimization)
+// Dynamic script loader avoiding initial page weight block
 function loadScript(src) {
   return new Promise((resolve, reject) => {
     if (document.querySelector(`script[src="${src}"]`)) {
@@ -185,12 +190,12 @@ function formatPrice(p) { return '₹' + Number(p).toFixed(2); }
 function discountPercent(o,c) { if(!o||o<=c) return null; return Math.round(((o-c)/o)*100); }
 function getStockDisplay(stock) { return (stock === undefined || stock === null || stock === '' || stock === 0) ? '0' : stock; }
 
-// Preemptively intercepts any broken asset URLs returning 404 from third party (Ensures 100 Best Practices)
+// Intercepts and replaces any broken Image URL from third party to eliminate 404 console errors
 function getSafeImageUrl(url) {
-  const backupBookCover = "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?q=80&w=120&auto=format&fit=crop&fm=webp";
-  if (!url) return backupBookCover;
+  const fallbackCover = "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?q=80&w=120&auto=format&fit=crop&fm=webp";
+  if (!url) return fallbackCover;
   if (url.includes("367db26836c1") || url.includes("photo-147")) {
-    return backupBookCover;
+    return fallbackCover;
   }
   if (url.includes("unsplash.com") && !url.includes("fm=")) {
     return url + "&fm=webp&q=70";
@@ -209,7 +214,7 @@ async function loadAllData() {
     categories = await cRes.json();
     categories.forEach(cat => categoryMap[cat.id] = cat.name);
     
-    // Completely deferring non-critical social APIs to resolve critical request path audits
+    // Defer non-critical social APIs from initial render thread
     setTimeout(loadFooterSocials, 300);
   } catch(e) { 
     console.warn("Catalog connection error. Loading offline fallback:", e); 
@@ -288,7 +293,7 @@ function productCard(product, index) {
   const disc = discountPercent(product.originalPrice, product.price);
   const safeImg = getSafeImageUrl(product.image);
   
-  // High Priority Loading on first row (index < 2) to resolve LCP load delay audits
+  // Advanced LCP optimization: prioritize above-the-fold images to avoid lazy loading flags
   const isLcp = index < 2;
   const imgAttributes = isLcp 
     ? `fetchpriority="high" width="120" height="160"` 
@@ -589,7 +594,7 @@ window.openCheckout = async function(items, subtotal) {
 
     if (!name || !email || !mobile || !address || !city || !zip) return showAlert('Please fill out all fields.');
 
-    // Runtime Dynamic execution of payment gateway APIs (Lighthouse Performance optimization)
+    // Dynamic library injection on pay click to speed up PageSpeed initial metrics
     try {
       await loadScript("https://checkout.razorpay.com/v1/checkout.js");
     } catch (e) {
