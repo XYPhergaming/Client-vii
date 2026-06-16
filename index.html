@@ -40,7 +40,6 @@
   <!-- Preconnect Optimization -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://client-vi.vercel.app">
 
   <!-- Single Font Payload Definition -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@1,600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -99,7 +98,6 @@
 
 <!-- MAIN VIEWPORT -->
 <main id="main-content" tabindex="-1">
-  <!-- Initially filled with skeleton banner & cards; will be replaced by renderMainView() immediately -->
   <div class="layout-gap">
     <div class="skeleton-banner skeleton-bg"></div>
     <div class="skeleton-grid">
@@ -141,7 +139,7 @@
 
 <script>
 // ==========================================
-// CLIENT-SIDE WEB CONTROLLER (Optimized)
+// CLIENT-SIDE WEB CONTROLLER
 // ==========================================
 const API_BASE = "https://client-vi.vercel.app";
 
@@ -154,6 +152,7 @@ let revealObserver = null;
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => document.querySelectorAll(s);
 
+// Dynamic Script Loader
 function loadScript(src) {
   return new Promise((resolve, reject) => {
     if (document.querySelector(`script[src="${src}"]`)) {
@@ -185,7 +184,6 @@ function formatPrice(p) { return '₹' + Number(p).toFixed(2); }
 function discountPercent(o,c) { if(!o||o<=c) return null; return Math.round(((o-c)/o)*100); }
 function getStockDisplay(stock) { return (stock === undefined || stock === null || stock === '' || stock === 0) ? '0' : stock; }
 
-// Data loading - fires after initial render
 async function loadAllData() {
   try {
     const [pRes, cRes] = await Promise.all([
@@ -196,16 +194,12 @@ async function loadAllData() {
     products = await pRes.json();
     categories = await cRes.json();
     categories.forEach(cat => categoryMap[cat.id] = cat.name);
-    // Update category tabs now that we have categories
-    updateCategoryTabs();
-    // Populate grid with products
-    filterProducts('all');
-    // Defer footer socials loading
-    setTimeout(() => loadFooterSocials(), 0);
+    await loadFooterSocials();
   } catch(e) { 
     console.warn("Catalog connection error. Loading offline state:", e); 
   } finally {
     document.body.classList.add('ready');
+    renderMainView();
     observeReveal();
     updateCartBadge(); updateWishlistBadge();
   }
@@ -217,6 +211,7 @@ async function loadFooterSocials() {
     const res = await fetch(API_BASE + "/api/socials");
     const data = await res.json();
     let html = '';
+    // SVG Based Social Icons to avoid external library load
     if (data.facebook) {
       html += `<a href="${data.facebook}" target="_blank" rel="noopener noreferrer" class="social-bubble social-bubble-facebook" aria-label="Facebook Profile">
         <svg class="social-svg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg>
@@ -264,19 +259,12 @@ function getRatingStarsHTML(rating) {
   return `<div class="rating-container">${stars} <span class="rating-text">(${Number(rating).toFixed(1)})</span></div>`;
 }
 
-// Modified productCard: index for first 4 items (above the fold) get eager loading + fetchpriority high
-function productCard(product, index = 0) {
+function productCard(product) {
   const disc = discountPercent(product.originalPrice, product.price);
-  // First 4 items (2 rows on mobile, 1 row on desktop) should not be lazy-loaded to speed LCP
-  const isHighPriority = index < 4;
   return `
   <div class="product-card reveal-on-scroll" onclick="window.goToProductDetail('${product.id}')">
     <div class="book-cover-wrap">
-      <img src="${product.image ? product.image + '&fm=webp&q=70' : ''}" alt="${product.name}" class="book-cover-img" 
-           ${isHighPriority ? 'fetchpriority="high"' : ''} 
-           ${isHighPriority ? '' : 'loading="lazy"'}
-           onerror="this.style.display='none';this.parentElement.style.background='#F3F0FF';"
-           width="180" height="240">
+      <img src="${product.image ? product.image + '&fm=webp&q=70' : ''}" alt="${product.name}" class="book-cover-img" onerror="this.style.display='none';this.parentElement.style.background='#F3F0FF';" loading="lazy" width="180" height="240">
       ${product.badge?`<span class="badge-tag uppercase">${product.badge}</span>`:''}
       ${disc ? `<span class="badge-discount">-${disc}%</span>` : ''}
     </div>
@@ -317,30 +305,11 @@ function filterProducts(catId) {
   activeCategory = catId; const grid = $('#products-grid'); if (!grid) return;
   let filtered = catId === 'all' ? products : products.filter(p => p.category === catId);
   const sorted = [...filtered].sort((a,b) => (b.reviews||0) - (a.reviews||0));
-  // Pass index to productCard for LCP optimization
-  grid.innerHTML = sorted.length ? sorted.map((p, i) => productCard(p, i)).join('') : '<p class="no-products">No products found</p>';
+  grid.innerHTML = sorted.length ? sorted.map(p => productCard(p)).join('') : '<p class="no-products">No products found</p>';
   attachListeners();
   observeReveal();
 }
 
-function updateCategoryTabs() {
-  const container = $('#category-tabs');
-  if (!container) return;
-  container.innerHTML = `
-    <button class="cat-tab active" data-cat="all" aria-label="Show all categories">All</button>
-    ${categories.map(c => `<button class="cat-tab" data-cat="${c.id}" aria-label="Category ${c.name}">${c.name}</button>`).join('')}
-  `;
-  // Re-attach tab listeners
-  $$('.cat-tab').forEach(tab => {
-    tab.onclick = () => {
-      $$('.cat-tab').forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      filterProducts(tab.dataset.cat);
-    };
-  });
-}
-
-// Render main view immediately (hero + skeleton grid + search) – does NOT wait for API
 function renderMainView() {
   const main = $('#main-content');
   main.innerHTML = `
@@ -371,32 +340,27 @@ function renderMainView() {
       </span>
     </div>
     <div class="category-tabs-container" id="category-tabs">
-      <!-- Initially only "All" tab, will be updated later -->
-      <button class="cat-tab active" data-cat="all">All</button>
+      <button class="cat-tab active" data-cat="all" aria-label="Show all categories">All</button>
+      ${categories.map(c => `<button class="cat-tab" data-cat="${c.id}" aria-label="Category ${c.name}">${c.name}</button>`).join('')}
     </div>
-    <div class="products-grid" id="products-grid">
-      <!-- skeleton cards while data loads -->
-      <div class="skeleton-card skeleton-bg"></div>
-      <div class="skeleton-card skeleton-bg"></div>
-      <div class="skeleton-card skeleton-bg"></div>
-    </div>
+    <div class="products-grid" id="products-grid"></div>
   </section>`;
 
-  // Search overlay trigger
-  const searchInput = $('#product-search');
-  if (searchInput) searchInput.onclick = () => window.openSearchOverlay();
-  // Initialize tab listeners (only "All" active for now)
-  document.querySelectorAll('.cat-tab').forEach(tab => {
+  $$('.cat-tab').forEach(tab => {
     tab.onclick = () => {
-      document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+      $$('.cat-tab').forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
       filterProducts(tab.dataset.cat);
     };
   });
+
+  const searchInput = $('#product-search');
+  if (searchInput) searchInput.onclick = () => window.openSearchOverlay();
+
+  filterProducts('all');
   observeReveal();
 }
 
-// Overlay functions (unchanged except for minor adjustments if needed)
 window.openSearchOverlay = function() {
   const existing = document.querySelector('#search-overlay-page'); if (existing) existing.remove();
   const overlay = document.createElement('div'); overlay.id = 'search-overlay-page'; overlay.className = 'full-page-overlay';
@@ -534,9 +498,6 @@ window.goToProductDetail = async function(id) {
   }
 };
 
-// ... rest of the functions (openCheckout, openTracking, renderCartOverlay, renderWishlistOverlay, openChatOverlay, openProfileOverlay, openSignupOverlay, openOtpVerificationOverlay, setupUI, etc.) remain unchanged. For brevity, I'm including them exactly as they were.
-// They are identical to the original code, no modifications needed for performance.
-
 window.openCheckout = async function(items, subtotal) {
   const existing = document.querySelector('.full-page-overlay'); if (existing) existing.remove();
   const overlay = document.createElement('div'); overlay.className = 'full-page-overlay';
@@ -595,6 +556,7 @@ window.openCheckout = async function(items, subtotal) {
 
     if (!name || !email || !mobile || !address || !city || !zip) return showAlert('Please fill out all fields.');
 
+    // Dynamic library call only when user initiates checkout payment (Performance Rules)
     try {
       await loadScript("https://checkout.razorpay.com/v1/checkout.js");
     } catch (e) {
@@ -1063,8 +1025,7 @@ function observeReveal() {
 
 function updateCartBadge() {
   const c = $('#cart-count'); if (!c) return;
-  const count = cart.reduce((sum, item) => sum + item.qty, 0);
-  c.textContent = count;
+  const count = cart.length; c.textContent = count;
   c.style.display = count ? 'flex' : 'none';
 }
 function updateWishlistBadge() {
@@ -1076,15 +1037,11 @@ function updateWishlistBadge() {
 async function init() {
   setupUI(); updateProfileUI();
   
-  // Render the skeleton layout immediately (hero, tabs, empty grid)
-  renderMainView();
-  
-  // Load API data in background – this will populate categories and products
   const pending = localStorage.getItem('shobdotori_pending_email');
   if (pending) {
     window.openOtpVerificationOverlay(pending, "Customer");
   }
-  
+
   await loadAllData();
 }
 document.addEventListener('DOMContentLoaded', init);
